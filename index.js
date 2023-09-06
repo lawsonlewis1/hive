@@ -12,10 +12,11 @@ app.get('/', (req, res) => {
 });
 
 io.on('connection', (socket) => {
+	socket.join('hive');
 	socket.on('disconnect', () => {
 	})
 	socket.on('move', (data) => {
-		socket.broadcast.emit('move', data);
+		socket.to('hive').emit('move', data);
 	})
 });
 
