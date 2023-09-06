@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Hive Game</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+	<img id="w-spider" class='piece' src="/img/w-spider.png" alt="white spider" draggable="true">
+	<img id="w-ant-1" class='piece' src="/img/w-ant.png" alt="white ant" draggable="true">
+	<img id="w-ant-2" class='piece' src="/img/w-ant.png" alt="white ant" draggable="true">
+	<img id="w-ant-3" class='piece' src="/img/w-ant.png" alt="white ant" draggable="true">
+</body>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+	var socket = io();
+	socket.on('move', (data) => {
+		var piece = document.getElementById(data['id']);
+		piece.style.top = data['top'];
+		piece.style.left = data['left'];
+	})
+
+	pieces = document.getElementsByClassName('piece');
+	for (var i = 0; i < pieces.length; i++) {
+	    dragElement(pieces.item(i));
+	    pieces.item(i).style.left = pieces.item(i).width * i + 5 + 'px';
+	} 
+
+	function dragElement(elmnt) {
+		var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+		elmnt.onmousedown = dragMouseDown;
+
+		function dragMouseDown(e) {
+			e = e || window.event;
+			e.preventDefault();
+			// get the mouse cursor position at startup:
+			pos3 = e.clientX;
+			pos4 = e.clientY;
+			document.onmouseup = closeDragElement;
+			// call a function whenever the cursor moves:
+			document.onmousemove = elementDrag;
+		}
+
+		function elementDrag(e) {
+			e = e || window.event;
+			e.preventDefault();
+			// calculate the new cursor position:
+			pos1 = pos3 - e.clientX;
+			pos2 = pos4 - e.clientY;
+			pos3 = e.clientX;
+			pos4 = e.clientY;
+			// set the element's new position:
+			elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+			elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+			socket.emit('move', {id: elmnt.id, top: elmnt.style.top, left: elmnt.style.left});
+		}
+
+		function closeDragElement() {
+			// stop moving when mouse button is released:
+			document.onmouseup = null;
+			document.onmousemove = null;
+		}
+	}
+</script>
+
+</html>
