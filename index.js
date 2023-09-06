@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
 io.on('connection', (socket) => {
 	socket.join('hive');
 	socket.on('move', (data) => {
-		socket.to('hive').emit('move', data);
+		io.to('hive').emit('move', data);
 	})
 });
 
