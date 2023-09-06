@@ -11,12 +11,14 @@ app.get('/', (req, res) => {
 	res.sendFile(__dirname + '/public/static/template/index.html');
 });
 
+const room = 'hive';
 io.on('connection', (socket) => {
-	socket.join('hive');
+	socket.join(room);
 	socket.on('move', (data) => {
-		io.to('hive').emit('move', data);
+		socket.to(room).emit('move', data);
 	})
 });
+
 
 server.listen(3000, () => {
 	console.log('listening on *:3000');
