@@ -11,13 +11,18 @@ app.get('/', (req, res) => {
 	res.sendFile(__dirname + '/public/static/template/index.html');
 });
 
+const room = 'hive';
 io.on('connection', (socket) => {
-	socket.on('disconnect', () => {
+	socket.join(room);
+	socket.on('newPlayer', (player) => {
+		console.log(player);
+		socket.to(room).emit('newPlayer', player);
 	})
 	socket.on('move', (data) => {
-		socket.broadcast.emit('move', data);
+		socket.to(room).emit('move', data);
 	})
 });
+
 
 server.listen(3000, () => {
 	console.log('listening on *:3000');
