@@ -14,6 +14,10 @@ app.get('/', (req, res) => {
 const room = 'hive';
 io.on('connection', (socket) => {
 	socket.join(room);
+	socket.on('newPlayer', (player) => {
+		console.log(player);
+		socket.to(room).emit('newPlayer', player);
+	})
 	socket.on('move', (data) => {
 		socket.to(room).emit('move', data);
 	})

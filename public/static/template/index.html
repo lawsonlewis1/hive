@@ -9,6 +9,11 @@
 </head>
 
 <body>
+	<dialog id="namedialog">
+		<label for="playername">player name?</label>
+		<input type="text" name="playername" id="playername">
+		<button id="nameButton" onclick="setPlayerName(document.getElementById('playername').value)">OK</button>
+	</dialog>
 	<img id="w-spider-1" class='white-piece' src="/img/w-spider.png" alt="white spider" draggable="true">
 	<img id="w-spider-2" class='white-piece' src="/img/w-spider.png" alt="white spider" draggable="true">
 	<img id="w-ant-1" class='white-piece' src="/img/w-ant.png" alt="white ant" draggable="true">
@@ -35,15 +40,31 @@
 	<img id="b-ladybug" class='black-piece' src="/img/b-ladybug.png" alt="black ladybug" draggable="true">
 	<img id="b-beetle-1" class='black-piece' src="/img/b-beetle.png" alt="black beetle" draggable="true">
 	<img id="b-beetle-2" class='black-piece' src="/img/b-beetle.png" alt="black beetle" draggable="true">
+<div id="playerbar"><ul id="players"></ul></div>
 </body>
 <script src="/socket.io/socket.io.js"></script>
 <script>
 	var socket = io();
+	socket.on('newPlayer', (player) => {
+		const ul = document.getElementById('players');
+		var li = document.createElement('li');
+		li.innerText = player['name'];
+		ul.append(li);
+	});
 	socket.on('move', (data) => {
 		var piece = document.getElementById(data['id']);
 		piece.style.top = data['top'];
 		piece.style.left = data['left'];
-	})
+	});
+	document.getElementById('namedialog').showModal();
+	const setPlayerName = function(name) {
+		socket.emit('newPlayer', ({name: name}))
+		document.getElementById('namedialog').close();
+		const ul = document.getElementById('players');
+		var li = document.createElement('li');
+		li.innerText = name;
+		ul.append(li);
+	}
 
 	w_pieces = document.getElementsByClassName('white-piece');
 	for (var i = 0; i < w_pieces.length; i++) {
