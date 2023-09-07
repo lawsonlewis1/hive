@@ -1,8 +1,22 @@
 body {
     background-color: #615c55;
 }
+
 img {
     border-radius: 4px;
     position: absolute;
     width: 50px;
+}
+
+#players {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+li {
+    list-style: none;
+    margin: 5px;
 }
