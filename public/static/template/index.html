@@ -45,12 +45,18 @@
 <script src="/socket.io/socket.io.js"></script>
 <script>
 	var socket = io();
-	socket.on('newPlayer', (player) => {
+	socket.on('playerIn', (player) => {
+		console.log(player['id'] + "joined")
 		const ul = document.getElementById('players');
 		var li = document.createElement('li');
+		li.id = player['id'];
 		li.innerText = player['name'];
 		ul.append(li);
 	});
+	socket.on('playerOut', (player) => {
+		var li = document.getElementById(player['id']);
+		li.remove();
+	})
 	socket.on('move', (data) => {
 		var piece = document.getElementById(data['id']);
 		piece.style.top = data['top'];
@@ -58,10 +64,11 @@
 	});
 	document.getElementById('namedialog').showModal();
 	const setPlayerName = function(name) {
-		socket.emit('newPlayer', ({name: name}))
+		socket.emit('playerIn', ({name: name, id: socket.id}))
 		document.getElementById('namedialog').close();
 		const ul = document.getElementById('players');
 		var li = document.createElement('li');
+		li.id = socket.id;
 		li.innerText = name;
 		ul.append(li);
 	}
