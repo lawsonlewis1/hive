@@ -93,6 +93,11 @@
 		function dragMouseDown(e) {
 			e = e || window.event;
 			e.preventDefault();
+			// Bring the current elmnt to the front
+			for (const img of document.querySelectorAll("img")) {
+				img.style.zIndex = -1;
+			}
+			elmnt.style.zIndex = 0;
 			// get the mouse cursor position at startup:
 			pos3 = e.clientX;
 			pos4 = e.clientY;
