@@ -1,5 +1,10 @@
+* {
+    color: white;
+    font-family: monospace;
+}
+
 body {
-    background-color: #615c55;
+    background-color: #212325;
 }
 
 img {
@@ -7,21 +12,41 @@ img {
     position: absolute;
     width: 50px;
     cursor: grab;
+    z-index: -1;
 }
 
 img:active {
     cursor: grabbing;
 }
 
-#players {
+#playerbar {
     position: absolute;
     bottom: 0;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
 }
+#players {
+    position: absolute;
+    bottom: 0;
+}
 
 li {
-    list-style: none;
     margin: 5px;
+}
+.hints {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    text-align: right;
+}
+dialog, input, button{
+    background-color: black;
+    border: none
+}
+dialog {
+    border-radius: 8px;
+}
+label {
+    padding-right: 5px;
 }
