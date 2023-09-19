@@ -41,6 +41,9 @@ io.on('connection', async (socket) => {
     socket.on('move', (data) => {
         socket.to(room).emit('move', data);
     })
+    socket.on('stack', (data) => {
+        socket.to(room).emit('stack', data);
+    })
     socket.on('disconnect', () => {
         let db = new sqlite3.Database('./players.db');
         db.run(`DELETE

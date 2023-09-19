@@ -2,135 +2,140 @@
 <html lang="en">
 
 <head>
-	<title>Hive Game</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="/css/style.css">
+    <title>Hive Game</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
-	<dialog id="namedialog">
-		<label for="playername">player name:</label>
-		<input type="text" name="playername" id="playername">
-		<button id="nameButton" onclick="setPlayerName(document.getElementById('playername').value)">OK</button>
-	</dialog>
-	<img id="w-spider-1" class='white-piece' src="/img/w-spider.png" alt="white spider" draggable="true">
-	<img id="w-spider-2" class='white-piece' src="/img/w-spider.png" alt="white spider" draggable="true">
-	<img id="w-ant-1" class='white-piece' src="/img/w-ant.png" alt="white ant" draggable="true">
-	<img id="w-ant-2" class='white-piece' src="/img/w-ant.png" alt="white ant" draggable="true">
-	<img id="w-ant-3" class='white-piece' src="/img/w-ant.png" alt="white ant" draggable="true">
-	<img id="w-hopper-1" class='white-piece' src="/img/w-hopper.png" alt="white grass hopper" draggable="true">
-	<img id="w-hopper-2" class='white-piece' src="/img/w-hopper.png" alt="white grass hopper" draggable="true">
-	<img id="w-hopper-3" class='white-piece' src="/img/w-hopper.png" alt="white grass hopper" draggable="true">
-	<img id="w-bee" class='white-piece' src="/img/w-bee.png" alt="white bee" draggable="true">
-	<img id="w-mosquito" class='white-piece' src="/img/w-mosquito.png" alt="white mosquito" draggable="true">
-	<img id="w-ladybug" class='white-piece' src="/img/w-ladybug.png" alt="white ladybug" draggable="true">
-	<img id="w-beetle-1" class='white-piece' src="/img/w-beetle.png" alt="white beetle" draggable="true">
-	<img id="w-beetle-2" class='white-piece' src="/img/w-beetle.png" alt="white beetle" draggable="true">
-	<img id="b-spider-1" class='black-piece' src="/img/b-spider.png" alt="black spider" draggable="true">
-	<img id="b-spider-2" class='black-piece' src="/img/b-spider.png" alt="black spider" draggable="true">
-	<img id="b-ant-1" class='black-piece' src="/img/b-ant.png" alt="black ant" draggable="true">
-	<img id="b-ant-2" class='black-piece' src="/img/b-ant.png" alt="black ant" draggable="true">
-	<img id="b-ant-3" class='black-piece' src="/img/b-ant.png" alt="black ant" draggable="true">
-	<img id="b-hopper-1" class='black-piece' src="/img/b-hopper.png" alt="black grass hopper" draggable="true">
-	<img id="b-hopper-2" class='black-piece' src="/img/b-hopper.png" alt="black grass hopper" draggable="true">
-	<img id="b-hopper-3" class='black-piece' src="/img/b-hopper.png" alt="black grass hopper" draggable="true">
-	<img id="b-bee" class='black-piece' src="/img/b-bee.png" alt="black bee" draggable="true">
-	<img id="b-mosquito" class='black-piece' src="/img/b-mosquito.png" alt="black mosquito" draggable="true">
-	<img id="b-ladybug" class='black-piece' src="/img/b-ladybug.png" alt="black ladybug" draggable="true">
-	<img id="b-beetle-1" class='black-piece' src="/img/b-beetle.png" alt="black beetle" draggable="true">
-	<img id="b-beetle-2" class='black-piece' src="/img/b-beetle.png" alt="black beetle" draggable="true">
-	<div id="playerbar">
-	    <span>players &uarr;</span>
-		<ul id="players"></ul>
-	</div>
-	<div class="hints"><span>hint: double click a piece to bring it forward for stacking<br>(you may need to do it multiple times)</span></div>
+<dialog id="namedialog">
+    <label for="playername">player name:</label>
+    <input type="text" name="playername" id="playername">
+    <button id="nameButton" onclick="setPlayerName(document.getElementById('playername').value)">OK</button>
+</dialog>
+<img id="w-spider-1" class='white-piece' src="/img/w-spider.png" alt="white spider" draggable="true">
+<img id="w-spider-2" class='white-piece' src="/img/w-spider.png" alt="white spider" draggable="true">
+<img id="w-ant-1" class='white-piece' src="/img/w-ant.png" alt="white ant" draggable="true">
+<img id="w-ant-2" class='white-piece' src="/img/w-ant.png" alt="white ant" draggable="true">
+<img id="w-ant-3" class='white-piece' src="/img/w-ant.png" alt="white ant" draggable="true">
+<img id="w-hopper-1" class='white-piece' src="/img/w-hopper.png" alt="white grass hopper" draggable="true">
+<img id="w-hopper-2" class='white-piece' src="/img/w-hopper.png" alt="white grass hopper" draggable="true">
+<img id="w-hopper-3" class='white-piece' src="/img/w-hopper.png" alt="white grass hopper" draggable="true">
+<img id="w-bee" class='white-piece' src="/img/w-bee.png" alt="white bee" draggable="true">
+<img id="w-mosquito" class='white-piece' src="/img/w-mosquito.png" alt="white mosquito" draggable="true">
+<img id="w-ladybug" class='white-piece' src="/img/w-ladybug.png" alt="white ladybug" draggable="true">
+<img id="w-beetle-1" class='white-piece' src="/img/w-beetle.png" alt="white beetle" draggable="true">
+<img id="w-beetle-2" class='white-piece' src="/img/w-beetle.png" alt="white beetle" draggable="true">
+<img id="b-spider-1" class='black-piece' src="/img/b-spider.png" alt="black spider" draggable="true">
+<img id="b-spider-2" class='black-piece' src="/img/b-spider.png" alt="black spider" draggable="true">
+<img id="b-ant-1" class='black-piece' src="/img/b-ant.png" alt="black ant" draggable="true">
+<img id="b-ant-2" class='black-piece' src="/img/b-ant.png" alt="black ant" draggable="true">
+<img id="b-ant-3" class='black-piece' src="/img/b-ant.png" alt="black ant" draggable="true">
+<img id="b-hopper-1" class='black-piece' src="/img/b-hopper.png" alt="black grass hopper" draggable="true">
+<img id="b-hopper-2" class='black-piece' src="/img/b-hopper.png" alt="black grass hopper" draggable="true">
+<img id="b-hopper-3" class='black-piece' src="/img/b-hopper.png" alt="black grass hopper" draggable="true">
+<img id="b-bee" class='black-piece' src="/img/b-bee.png" alt="black bee" draggable="true">
+<img id="b-mosquito" class='black-piece' src="/img/b-mosquito.png" alt="black mosquito" draggable="true">
+<img id="b-ladybug" class='black-piece' src="/img/b-ladybug.png" alt="black ladybug" draggable="true">
+<img id="b-beetle-1" class='black-piece' src="/img/b-beetle.png" alt="black beetle" draggable="true">
+<img id="b-beetle-2" class='black-piece' src="/img/b-beetle.png" alt="black beetle" draggable="true">
+<div id="playerbar">
+    <span>players &uarr;</span>
+    <ul id="players"></ul>
+</div>
+<div class="hints"><span>hint: double click a piece to bring it forward for stacking<br>(you may need to do it multiple times)</span>
+</div>
 </body>
 <script src="/socket.io/socket.io.js"></script>
 <script>
-	var socket = io();
-	socket.on('playerIn', (player) => {
-		console.log(player['id'] + " joined")
-		const ul = document.getElementById('players');
-		var li = document.createElement('li');
-		li.id = player['id'];
-		li.innerText = player['name'];
-		ul.append(li);
-	});
-	socket.on('playerOut', (player) => {
-		var li = document.getElementById(player['id']);
-		li.remove();
-	})
-	socket.on('move', (data) => {
-		var piece = document.getElementById(data['id']);
-		piece.style.top = data['top'];
-		piece.style.left = data['left'];
-	});
-	document.getElementById('namedialog').showModal();
-	const setPlayerName = function (name) {
-		socket.emit('playerIn', ({name: name, id: socket.id}))
-		document.getElementById('namedialog').close();
-		const ul = document.getElementById('players');
-		var li = document.createElement('li');
-		li.id = socket.id;
-		li.innerText = name;
-		ul.append(li);
-	}
+    var socket = io();
+    socket.on('playerIn', (player) => {
+        console.log(player['id'] + " joined")
+        const ul = document.getElementById('players');
+        var li = document.createElement('li');
+        li.id = player['id'];
+        li.innerText = player['name'];
+        ul.append(li);
+    });
+    socket.on('playerOut', (player) => {
+        var li = document.getElementById(player['id']);
+        li.remove();
+    })
+    socket.on('move', (data) => {
+        var piece = document.getElementById(data['id']);
+        piece.style.top = data['top'];
+        piece.style.left = data['left'];
+    });
+    socket.on('stack', (data) => {
+        var piece = document.getElementById(data['id']);
+        piece.style.zIndex = data['zIndex'];
+    })
+    document.getElementById('namedialog').showModal();
+    const setPlayerName = function (name) {
+        socket.emit('playerIn', ({name: name, id: socket.id}))
+        document.getElementById('namedialog').close();
+        const ul = document.getElementById('players');
+        var li = document.createElement('li');
+        li.id = socket.id;
+        li.innerText = name;
+        ul.append(li);
+    }
 
-	w_pieces = document.getElementsByClassName('white-piece');
-	for (var i = 0; i < w_pieces.length; i++) {
-		dragElement(w_pieces.item(i));
-		w_pieces.item(i).style.left = w_pieces.item(i).width * i + 5 + 'px';
-		w_pieces.item(i).addEventListener('dblclick', (event) => {
-			event.currentTarget.style.zIndex += 1;
-		})
-	}
-	b_pieces = document.getElementsByClassName('black-piece');
-	for (var i = 0; i < b_pieces.length; i++) {
-		dragElement(b_pieces.item(i));
-		b_pieces.item(i).style.left = b_pieces.item(i).width * i + 5 + 'px';
-		b_pieces.item(i).style.top = b_pieces.item(i).height + 60 + 'px';
-		b_pieces.item(i).addEventListener('dblclick', (event) => {
-			event.currentTarget.style.zIndex += 1;
-		})
-	}
+    let stackPiece = function (event) {
+        event.currentTarget.style.zIndex += 1;
+        socket.emit('stack', {id: event.currentTarget.id, zIndex: event.currentTarget.style.zIndex});
+    }
+    w_pieces = document.getElementsByClassName('white-piece');
+    for (var i = 0; i < w_pieces.length; i++) {
+        dragElement(w_pieces.item(i));
+        w_pieces.item(i).style.left = w_pieces.item(i).width * i + 5 + 'px';
+        w_pieces.item(i).addEventListener('dblclick', stackPiece)
+    }
+    b_pieces = document.getElementsByClassName('black-piece');
+    for (var i = 0; i < b_pieces.length; i++) {
+        dragElement(b_pieces.item(i));
+        b_pieces.item(i).style.left = b_pieces.item(i).width * i + 5 + 'px';
+        b_pieces.item(i).style.top = b_pieces.item(i).height + 60 + 'px';
+        b_pieces.item(i).addEventListener('dblclick', stackPiece)
+    }
 
 
-	function dragElement(elmnt) {
-		var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-		elmnt.onmousedown = dragMouseDown;
+    function dragElement(elmnt) {
+        var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+        elmnt.onmousedown = dragMouseDown;
 
-		function dragMouseDown(e) {
-			e = e || window.event;
-			e.preventDefault();
-			// get the mouse cursor position at startup:
-			pos3 = e.clientX;
-			pos4 = e.clientY;
-			document.onmouseup = closeDragElement;
-			// call a function whenever the cursor moves:
-			document.onmousemove = elementDrag;
-		}
+        function dragMouseDown(e) {
+            e = e || window.event;
+            e.preventDefault();
+            // get the mouse cursor position at startup:
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+            document.onmouseup = closeDragElement;
+            // call a function whenever the cursor moves:
+            document.onmousemove = elementDrag;
+        }
 
-		function elementDrag(e) {
-			e = e || window.event;
-			e.preventDefault();
-			// calculate the new cursor position:
-			pos1 = pos3 - e.clientX;
-			pos2 = pos4 - e.clientY;
-			pos3 = e.clientX;
-			pos4 = e.clientY;
-			// set the element's new position:
-			elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-			elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-			socket.emit('move', {id: elmnt.id, top: elmnt.style.top, left: elmnt.style.left});
-		}
+        function elementDrag(e) {
+            e = e || window.event;
+            e.preventDefault();
+            // calculate the new cursor position:
+            pos1 = pos3 - e.clientX;
+            pos2 = pos4 - e.clientY;
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+            // set the element's new position:
+            elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+            elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+            socket.emit('move', {id: elmnt.id, top: elmnt.style.top, left: elmnt.style.left});
+        }
 
-		function closeDragElement() {
-			// stop moving when mouse button is released:
-			document.onmouseup = null;
-			document.onmousemove = null;
-		}
-	}
+        function closeDragElement() {
+            // stop moving when mouse button is released:
+            document.onmouseup = null;
+            document.onmousemove = null;
+        }
+    }
 </script>
 
 </html>
