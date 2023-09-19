@@ -1,3 +1,38 @@
+#wrapper {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transform: translateY(-40px);
+    height: 300px;
+    border: 1px solid black;
+    width: 187px;
+    border-radius: 4px;
+}
+#chat {
+    overflow: auto;
+    height: 280px;
+}
+.chatName {
+    font-size: 10px;
+    width: 100%;
+    display: block;
+    text-decoration: overline;
+    color: gray;
+}
+.my-msg, .msg {
+    border: 1px solid whitesmoke;
+    margin: 4px;
+    border-radius: 4px;
+    padding: 2px 6px;
+    width: fit-content;
+    font-size: 12px;
+}
+.my-msg {
+    text-align: right;
+    border: 1px solid cornflowerblue;
+    margin-left: auto;
+}
+#chatinput {position: absolute;bottom: 0;left: 0;}
 * {
     color: white;
     font-family: monospace;
