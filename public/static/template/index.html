@@ -1,4 +1,4 @@
-let i; <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -130,10 +130,13 @@ let i; <!DOCTYPE html>
             socket.emit('move', {id: elmnt.id, top: elmnt.style.top, left: elmnt.style.left});
         }
 
-        function closeDragElement() {
+        function closeDragElement(e) {
             // stop moving when mouse button is released:
             document.onmouseup = null;
             document.onmousemove = null;
+            
+            // store the pieces new location
+            socket.emit('new_pos', {id: e.target.id, top: e.target.style.top, left: e.target.style.left});
         }
     }
 </script>
