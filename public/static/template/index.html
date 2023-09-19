@@ -13,6 +13,8 @@
     <label for="playername">player name:</label>
     <input type="text" name="playername" id="playername">
     <button id="nameButton" onclick="setPlayerName(document.getElementById('playername').value)">OK</button>
+    <br>
+    <span id="name-errors"></span>
 </dialog>
 <img id="w-spider-1" class='white-piece' src="/img/w-spider.png" alt="white spider" draggable="true">
 <img id="w-spider-2" class='white-piece' src="/img/w-spider.png" alt="white spider" draggable="true">
@@ -73,13 +75,18 @@
     })
     document.getElementById('namedialog').showModal();
     const setPlayerName = function (name) {
-        socket.emit('playerIn', ({name: name, id: socket.id}))
-        document.getElementById('namedialog').close();
-        const ul = document.getElementById('players');
-        const li = document.createElement('li');
-        li.id = socket.id;
-        li.innerText = name;
-        ul.append(li);
+        if (name.length > 3) {
+            socket.emit('playerIn', ({name: name, id: socket.id}))
+            document.getElementById('namedialog').close();
+            const ul = document.getElementById('players');
+            const li = document.createElement('li');
+            li.id = socket.id;
+            li.innerText = name;
+            ul.append(li);
+        } else {
+            const name_error = document.getElementById("name-errors");
+            name_error.innerText = "Name too short"
+        }
     }
 
     let stackPiece = function (event) {
@@ -134,7 +141,7 @@
             // stop moving when mouse button is released:
             document.onmouseup = null;
             document.onmousemove = null;
-            
+
             // store the pieces new location
             socket.emit('new_pos', {id: e.target.id, top: e.target.style.top, left: e.target.style.left});
         }

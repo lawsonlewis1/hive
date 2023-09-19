@@ -30,6 +30,9 @@ img:active {
     position: absolute;
     bottom: 0;
 }
+#name-errors {
+    color: red;
+}
 
 li {
     margin: 5px;
