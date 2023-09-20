@@ -8,10 +8,6 @@
     width: 187px;
     border-radius: 4px;
 }
-#chat {
-    overflow: auto;
-    height: 280px;
-}
 .chatName {
     font-size: 10px;
     width: 100%;
@@ -32,7 +28,6 @@
     border: 1px solid cornflowerblue;
     margin-left: auto;
 }
-#chatinput {position: absolute;bottom: 0;left: 0;}
 * {
     color: white;
     font-family: monospace;
@@ -41,16 +36,64 @@
 body {
     background-color: #212325;
 }
-
-img {
+.container {
+	display: flex;
+	flex-wrap: nowrap;
+	flex-direction: row;
+	height: 94vh;
+}
+.container2 {
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	padding: 5px;
+	height: 20px;
+	align-items: center;
+}
+.board {
+    border: 1px solid black;
     border-radius: 4px;
+    box-shadow: inset black 0px 0px 60px -12px;
+    flex-shrink: 1;
+}
+.chatbox {
+    position: relative;
+    border: 1px dashed black;
+    border-radius: 4px;
+    background: #111;
+    min-width: 250px;
+}
+#messagelist {
+	overflow: auto;
+}
+#chatinput {
     position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+#msgtxt {
+    width: -webkit-fill-available;
+    margin-right: 5px;
+}
+.players {
+}
+#playerlist {
+	display: inline-block;
+}
+.tglmsg {border-radius: 4px;cursor: pointer;}
+
+.piece {
+    border-radius: 4px;
     width: 50px;
     cursor: grab;
     z-index: -1;
+    touch-action: none;
+    user-select: none;
 }
 
-img:active {
+.piece:active {
     cursor: grabbing;
 }
 
@@ -87,4 +130,16 @@ dialog {
 }
 label {
     padding-right: 5px;
+}
+@media screen and (max-width: 600px) {
+	.container {
+		flex-wrap: wrap;
+		flex-direction: column;
+	}
+	.chatbox {
+		height: 18%;
+	}
+	.board {
+	flex-grow: 1;
+	}
 }

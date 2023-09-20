@@ -7,6 +7,7 @@ const io = new Server(server);
 const sqlite3 = require('sqlite3');
 
 app.use(express.static(__dirname + '/public/static'));
+app.use('/interactjs', express.static(__dirname + '/node_modules/interactjs/dist/'))
 
 app.get('/', (req, res) => {
 	res.sendFile(__dirname + '/public/static/template/index.html');
