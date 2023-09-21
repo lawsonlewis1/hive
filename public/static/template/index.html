@@ -132,15 +132,6 @@
         }
     }
 
-    let stackPiece = function (event) {
-        event.currentTarget.style.zIndex += 1;
-        socket.emit('stack', {id: event.currentTarget.id, zIndex: event.currentTarget.style.zIndex});
-    }
-    let pieces = document.getElementsByClassName('piece');
-    for (i = 0; i < pieces.length; i++) {
-        pieces.item(i).addEventListener('dblclick', stackPiece)
-    }
-
     const sendMsg = function () {
         const txt = document.getElementById("msgtxt");
         const msglist = document.getElementById("messagelist");
@@ -175,6 +166,7 @@
         ],
         listeners: {
             start(event) {
+                event.target.style.position = 'relative';
                 let matrix = new WebKitCSSMatrix(window.getComputedStyle(event.target).transform);
                 position.x = matrix.m41;
                 position.y = matrix.m42;
@@ -192,6 +184,11 @@
             }
         }
     })
+    interact('.draggable')
+        .on('doubletap', function(event) {
+            event.target.style.zIndex = Number(event.target.style.zIndex) + 1;
+            socket.emit('stack', {id: event.target.id, zIndex: event.target.style.zIndex});
+        })
 </script>
 
 </html>
