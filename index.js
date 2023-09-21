@@ -27,12 +27,12 @@ io.on('connection', async (socket) => {
 		})
 	});
 	db.serialize(() => {
-		db.each(`SELECT id, top, "left"
-                 from positions`, (err, row) => {
+		db.each(`SELECT id, x, y
+                 FROM positions`, (err, row) => {
 			if (err) {
 				console.log(err)
 			}
-			socket.emit('move', { id: row.id, top: row.top, left: row.left })
+			socket.emit('move', { id: row.id, x: row.x, y: row.y })
 		})
 	});
 	db.close();
@@ -56,13 +56,13 @@ io.on('connection', async (socket) => {
 	})
 	socket.on('new_pos', (data) => {
 		let db = new sqlite3.Database('./players.db');
-		db.run(`INSERT INTO positions (id, top, left)
+		db.run(`INSERT INTO positions (id, x, y)
                     VALUES (?, ?, ?);`,
-			[data['id'], data['top'], data['left']], (err) => {
+			[data['id'], data['x'], data['y']], (err) => {
 				if (err) {
 					console.log(err)
 				}
-				console.log(`${data['id']} top: ${data['top']} left: ${data['left']}`)
+				console.log(`${data['id']} x: ${data['x']} y: ${data['y']}`)
 			});
 		db.close();
 	}

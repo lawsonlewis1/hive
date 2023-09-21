@@ -79,9 +79,7 @@ body {
 }
 .players {
 }
-#playerlist {
-	display: inline-block;
-}
+#playerlist {display: inline-flex;list-style: '|';padding: inherit;}
 .tglmsg {border-radius: 4px;cursor: pointer;}
 
 .piece {
