@@ -83,6 +83,16 @@
 <script src="/socket.io/socket.io.js"></script>
 <script src="/interactjs/interact.js"></script>
 <script>
+    if (document.getElementById("playerlist").childNodes.length < 1) {
+        let wPieces = document.querySelectorAll(".white");
+        let bPieces = document.querySelectorAll(".black");
+        for (let i = 0; i < wPieces.length; i++) {
+            wPieces[i].style.transform = `translate(${i * 20}px, 0px)`;
+        }
+        for (let i = 0; i < bPieces.length; i++) {
+            bPieces[i].style.transform = `translate(${i * 20}px, 0px)`;
+        }
+    }
     const socket = io();
     socket.on('playerIn', (player) => {
         console.log(player['id'] + " joined")
@@ -166,7 +176,7 @@
         ],
         listeners: {
             start(event) {
-                event.target.style.position = 'relative';
+                // event.target.style.position = 'relative';
                 let matrix = new WebKitCSSMatrix(window.getComputedStyle(event.target).transform);
                 position.x = matrix.m41;
                 position.y = matrix.m42;

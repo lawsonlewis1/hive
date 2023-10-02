@@ -35,11 +35,12 @@
 
 body {
     background-color: #212325;
+    max-width: 380px;
 }
 .container {
 	display: flex;
-	flex-wrap: nowrap;
-	flex-direction: row;
+	flex-wrap: wrap;
+	flex-direction: column;
 	height: 94vh;
 }
 .container2 {
@@ -49,19 +50,24 @@ body {
 	padding: 5px;
 	height: 20px;
 	align-items: center;
+	width: 380px;
 }
 .board {
     border: 1px solid black;
     border-radius: 4px;
     box-shadow: inset black 0px 0px 60px -12px;
-    flex-shrink: 1;
+    flex-grow: 0;
+    flex-shrink: 0;
+    width: 380px;
+    height: 580px
 }
 .chatbox {
     position: relative;
     border: 1px dashed black;
     border-radius: 4px;
     background: #111;
-    min-width: 250px;
+    width: 230px;
+    height: 580px;
 }
 #messagelist {
 	overflow: auto;
@@ -84,7 +90,7 @@ body {
 
 .piece {
     border-radius: 4px;
-    width: 50px;
+    width: 45px;
     cursor: grab;
     touch-action: none;
     user-select: none;
@@ -92,6 +98,16 @@ body {
 
 .piece:active {
     cursor: grabbing;
+}
+.white {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+.black {
+    position: absolute;
+    top: 50px;
+    left: 10px;
 }
 
 #playerbar {
@@ -135,8 +151,9 @@ label {
 	}
 	.chatbox {
 		height: 18%;
+        width: 380px;
 	}
 	.board {
-	flex-grow: 1;
+	    flex-grow: 0;
 	}
 }
