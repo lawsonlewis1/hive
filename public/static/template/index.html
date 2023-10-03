@@ -85,7 +85,6 @@
         <span>Players &rarr;</span>
         <ul id="playerlist"></ul>
     </div>
-    <button class='tglmsg' onclick='toggleChat()'>chat</button>
 </div>
 </body>
 <script src="/socket.io/socket.io.js"></script>
@@ -109,10 +108,26 @@
         li.id = player['id'];
         li.innerText = player['name'];
         ul.append(li);
+        const board = document.getElementsByClassName("board")[0];
+        if (board.offsetWidth > player['boardWidth'] || board.offsetHeight > player['boardHeight']) {
+            const box = document.createElement("div");
+            box.id = "box_" + player['id'];
+            box.style.width = player['boardWidth'] + "px";
+            box.style.height = player['boardHeight'] + "px";
+            box.style.borderRight = "1px dashed #ffffff33";
+            box.style.borderBottom = "1px dashed #ffffff33";
+            box.style.zIndex = "-1";
+            box.style.position = "absolute";
+            box.style.top = "0";
+            box.style.left = "0";
+            board.appendChild(box);
+        }
     });
     socket.on('playerOut', (player) => {
         const li = document.getElementById(player['id']);
         li.remove();
+        const box = document.getElementById("box_" + player['id']);
+        box.remove();
     })
     socket.on('move', (data) => {
         const piece = document.getElementById(data['id']);
@@ -137,7 +152,13 @@
     document.getElementById('namedialog').showModal();
     const setPlayerName = function (name) {
         if (name.length > 3) {
-            socket.emit('playerIn', ({name: name, id: socket.id}))
+            const board = document.getElementsByClassName("board")[0];
+            socket.emit('playerIn', ({
+                name: name,
+                id: socket.id,
+                boardWidth: board.offsetWidth,
+                boardHeight: board.offsetHeight
+            }))
             document.getElementById('namedialog').close();
             const ul = document.getElementById('playerlist');
             const li = document.createElement('li');
@@ -161,15 +182,6 @@
         txt.value = '';
         txt.focus();
 
-    }
-    const toggleChat = function () {
-        chat = document.querySelector('.chatbox');
-        board = document.querySelector('.board');
-        if (chat.style.display === 'none') {
-            chat.style.display = 'inline';
-        } else {
-            chat.style.display = 'none';
-        }
     }
 
 

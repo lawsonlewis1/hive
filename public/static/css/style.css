@@ -33,58 +33,55 @@
     font-family: monospace;
 }
 
+html {
+    overflow: hidden;
+}
+
 body {
     background-color: #212325;
-    max-width: 380px;
+    /* max-width: 380px; */
 }
 .container {
 	display: flex;
 	flex-wrap: wrap;
 	flex-direction: column;
-	height: 94vh;
 }
 .container2 {
 	display: flex;
 	flex-wrap: nowrap;
 	justify-content: space-between;
 	padding: 5px;
-	height: 20px;
 	align-items: center;
-	width: 380px;
 }
 .board {
     border: 1px solid black;
     border-radius: 4px;
     box-shadow: inset black 0px 0px 60px -12px;
-    flex-grow: 0;
-    flex-shrink: 0;
-    width: 380px;
-    height: 580px
+    height: 75vh;
 }
 .chatbox {
-    position: relative;
-    border: 1px dashed black;
+    border: 1px solid black;
     border-radius: 4px;
     background: #111;
-    width: 230px;
-    height: 580px;
-}
-#messagelist {
-	overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 15vh;
 }
 #chatinput {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
+    position: initial;
 }
 #msgtxt {
-    width: -webkit-fill-available;
     margin-right: 5px;
+    height: 1.5em;
+    width: 300px;
+    border-radius: 4px;
 }
-.players {
+#msgbtn {
+    width: 55px;
+    border-radius: 4px;
+    height: 1.5em;
 }
+.players {overflow-x: auto;}
 #playerlist {display: inline-flex;list-style: '|';padding: inherit;}
 .tglmsg {border-radius: 4px;cursor: pointer;}
 
@@ -141,6 +138,9 @@ dialog, input, button{
 dialog {
     border-radius: 8px;
 }
+dialog::backdrop {
+    background: rgb(10 10 10 / 98%);
+}
 label {
     padding-right: 5px;
 }
@@ -150,10 +150,7 @@ label {
 		flex-direction: column;
 	}
 	.chatbox {
-		height: 18%;
-        width: 380px;
 	}
 	.board {
-	    flex-grow: 0;
 	}
 }
