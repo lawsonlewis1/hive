@@ -20,49 +20,57 @@
 <div class="container">
     <div class="board">
         <img id="w-spider-1" class='white piece draggable' src="/img/w-spider.png" alt="white spider"
-             draggable="true">
+             draggable="true" oncontextmenu="return false;">
         <img id="w-spider-2" class='white piece draggable' src="/img/w-spider.png" alt="white spider"
-             draggable="true">
-        <img id="w-ant-1" class='white piece draggable' src="/img/w-ant.png" alt="white ant" draggable="true">
-        <img id="w-ant-2" class='white piece draggable' src="/img/w-ant.png" alt="white ant" draggable="true">
-        <img id="w-ant-3" class='white piece draggable' src="/img/w-ant.png" alt="white ant" draggable="true">
+             draggable="true" oncontextmenu="return false;">
+        <img id="w-ant-1" class='white piece draggable' src="/img/w-ant.png" alt="white ant" draggable="true"
+             oncontextmenu="return false;">
+        <img id="w-ant-2" class='white piece draggable' src="/img/w-ant.png" alt="white ant" draggable="true"
+             oncontextmenu="return false;">
+        <img id="w-ant-3" class='white piece draggable' src="/img/w-ant.png" alt="white ant" draggable="true"
+             oncontextmenu="return false;">
         <img id="w-hopper-1" class='white piece draggable' src="/img/w-hopper.png" alt="white grass hopper"
-             draggable="true">
+             draggable="true" oncontextmenu="return false;">
         <img id="w-hopper-2" class='white piece draggable' src="/img/w-hopper.png" alt="white grass hopper"
-             draggable="true">
+             draggable="true" oncontextmenu="return false;">
         <img id="w-hopper-3" class='white piece draggable' src="/img/w-hopper.png" alt="white grass hopper"
-             draggable="true">
-        <img id="w-bee" class='white piece draggable' src="/img/w-bee.png" alt="white bee" draggable="true">
+             draggable="true" oncontextmenu="return false;">
+        <img id="w-bee" class='white piece draggable' src="/img/w-bee.png" alt="white bee" draggable="true"
+             oncontextmenu="return false;">
         <img id="w-mosquito" class='white piece draggable' src="/img/w-mosquito.png" alt="white mosquito"
-             draggable="true">
+             draggable="true" oncontextmenu="return false;">
         <img id="w-ladybug" class='white piece draggable' src="/img/w-ladybug.png" alt="white ladybug"
-             draggable="true">
+             draggable="true" oncontextmenu="return false;">
         <img id="w-beetle-1" class='white piece draggable' src="/img/w-beetle.png" alt="white beetle"
-             draggable="true">
+             draggable="true" oncontextmenu="return false;">
         <img id="w-beetle-2" class='white piece draggable' src="/img/w-beetle.png" alt="white beetle"
-             draggable="true">
+             draggable="true" oncontextmenu="return false;">
         <img id="b-spider-1" class='black piece draggable' src="/img/b-spider.png" alt="black spider"
-             draggable="true">
+             draggable="true" oncontextmenu="return false;">
         <img id="b-spider-2" class='black piece draggable' src="/img/b-spider.png" alt="black spider"
-             draggable="true">
-        <img id="b-ant-1" class='black piece draggable' src="/img/b-ant.png" alt="black ant" draggable="true">
-        <img id="b-ant-2" class='black piece draggable' src="/img/b-ant.png" alt="black ant" draggable="true">
-        <img id="b-ant-3" class='black piece draggable' src="/img/b-ant.png" alt="black ant" draggable="true">
+             draggable="true" oncontextmenu="return false;">
+        <img id="b-ant-1" class='black piece draggable' src="/img/b-ant.png" alt="black ant" draggable="true"
+             oncontextmenu="return false;">
+        <img id="b-ant-2" class='black piece draggable' src="/img/b-ant.png" alt="black ant" draggable="true"
+             oncontextmenu="return false;">
+        <img id="b-ant-3" class='black piece draggable' src="/img/b-ant.png" alt="black ant" draggable="true"
+             oncontextmenu="return false;">
         <img id="b-hopper-1" class='black piece draggable' src="/img/b-hopper.png" alt="black grass hopper"
-             draggable="true">
+             draggable="true" oncontextmenu="return false;">
         <img id="b-hopper-2" class='black piece draggable' src="/img/b-hopper.png" alt="black grass hopper"
-             draggable="true">
+             draggable="true" oncontextmenu="return false;">
         <img id="b-hopper-3" class='black piece draggable' src="/img/b-hopper.png" alt="black grass hopper"
-             draggable="true">
-        <img id="b-bee" class='black piece draggable' src="/img/b-bee.png" alt="black bee" draggable="true">
+             draggable="true" oncontextmenu="return false;">
+        <img id="b-bee" class='black piece draggable' src="/img/b-bee.png" alt="black bee" draggable="true"
+             oncontextmenu="return false;">
         <img id="b-mosquito" class='black piece draggable' src="/img/b-mosquito.png" alt="black mosquito"
-             draggable="true">
+             draggable="true" oncontextmenu="return false;">
         <img id="b-ladybug" class='black piece draggable' src="/img/b-ladybug.png" alt="black ladybug"
-             draggable="true">
+             draggable="true" oncontextmenu="return false;">
         <img id="b-beetle-1" class='black piece draggable' src="/img/b-beetle.png" alt="black beetle"
-             draggable="true">
+             draggable="true" oncontextmenu="return false;">
         <img id="b-beetle-2" class='black piece draggable' src="/img/b-beetle.png" alt="black beetle"
-             draggable="true">
+             draggable="true" oncontextmenu="return false;">
     </div>
     <div class="chatbox">
         <div id="messagelist"></div>
@@ -195,7 +203,7 @@
         }
     })
     interact('.draggable')
-        .on('doubletap', function(event) {
+        .on('doubletap', function (event) {
             event.target.style.zIndex = Number(event.target.style.zIndex) + 1;
             socket.emit('stack', {id: event.target.id, zIndex: event.target.style.zIndex});
         })
